@@ -1,17 +1,17 @@
-import User from "../models/UserModel.js";
+import Product from "../models/ProductModel.js";
 
-export const getUsers = async(req, res) =>{
+export const getProducts = async(req, res) =>{
     try {
-        const response = await User.findAll();
+        const response = await Product.findAll();
         res.status(200).json(response);
     } catch (error) {
         console.log(error.message);
     }
 }
 
-export const getUserById = async(req, res) =>{
+export const getProductById = async(req, res) =>{
     try {
-        const response = await User.findOne({
+        const response = await Product.findOne({
             where:{
                 id: req.params.id
             }
@@ -22,36 +22,36 @@ export const getUserById = async(req, res) =>{
     }
 }
 
-export const createUser = async(req, res) =>{
+export const createProduct = async(req, res) =>{
     try {
-        await User.create(req.body);
-        res.status(201).json({msg: "User Created"});
+        await Product.create(req.body);
+        res.status(201).json({msg: "Product Created"});
     } catch (error) {
         console.log(error.message);
     }
 }
 
-export const updateUser = async(req, res) =>{
+export const updateProduct = async(req, res) =>{
     try {
-        await User.update(req.body,{
+        await Product.update(req.body,{
             where:{
                 id: req.params.id
             }
         });
-        res.status(200).json({msg: "User Updated"});
+        res.status(200).json({msg: "Product Updated"});
     } catch (error) {
         console.log(error.message);
     }
 }
 
-export const deleteUser = async(req, res) =>{
+export const deleteProduct = async(req, res) =>{
     try {
-        await User.destroy({
+        await Product.destroy({
             where:{
                 id: req.params.id
             }
         });
-        res.status(200).json({msg: "User Deleted"});
+        res.status(200).json({msg: "Product Deleted"});
     } catch (error) {
         console.log(error.message);
     }
